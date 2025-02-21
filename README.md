@@ -1,8 +1,24 @@
-# React + Vite
+# Positive School 🌟  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive website built with **React**, **JavaScript**, **Three.js**, **Three Fiber**, **Blender**, and **TailwindCSS**. This project delivers an engaging 3D experience, blending smooth animations with a sleek UI.  
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend:** React, JavaScript  
+- **3D Graphics:** Three.js, React Three Fiber  
+- **3D Models:** Blender  
+- **Styling:** TailwindCSS  
+
+## 🎨 Features  
+
+✅ Immersive 3D models and animations  
+✅ Smooth user interactions with Three Fiber  
+✅ Responsive design with TailwindCSS  
+✅ Optimized performance for web  
+
+## 📂 Installation & Setup  
+
+1️⃣ **Clone the repository**  
+```sh
+git clone https://github.com/MadMax-5000/positive-school.git
+cd positive-school
