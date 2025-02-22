@@ -1,6 +1,6 @@
 # Positive School 🌟  
 
-A modern, interactive website built with **React**, **JavaScript**, **Three.js**, **React Three Fiber**, **Blender**, **GSAP**, and **TailwindCSS**. This project delivers an engaging 3D experience with smooth animations and a sleek UI.  
+A modern, interactive website built with **React**, **JavaScript**, **Three.js**, **React Three Fiber**, **Blender**, **GSAP**, and **TailwindCSS**. This project delivers an engaging 3D experience with smooth animations and a modern UI.  
 
 ---
 
@@ -10,7 +10,7 @@ A modern, interactive website built with **React**, **JavaScript**, **Three.js**
 - **3D Graphics:** Three.js, React Three Fiber  
 - **3D Models:** Blender  
 - **Styling:** TailwindCSS  
-- **Animations:** GSAP (GreenSock)  
+- **Animations:** GSAP 
 
 ---
 
@@ -31,7 +31,7 @@ git clone https://github.com/MadMax-5000/positive-school.git
 cd positive-school
 ```
 
-###2️⃣ Install dependencies
+### 2️⃣ Install dependencies
 ```sh
 npm install
 ```
