@@ -61,8 +61,8 @@ const Programs = () => {
           </p>
 
           <p className="max-w-md font-robert-medium text-2xl text-white opacity-50 tracking-tight">
-            Our programs are designed to help you sharpen your talent, whether
-            it’s on the dance floor, behind the mic, or through street art.
+            Our programs will help you refine your skills in RAP, Dance, Music,
+            and Street Art. <br /> Learn more below ...
           </p>
         </div>
 
@@ -74,7 +74,7 @@ const Programs = () => {
                 R<b>A</b>P
               </>
             }
-            description="Our rap program helps you develop your style, and understand the techniques that make great Rappers stand out."
+            description="Our rap program helps you refine your style and master the techniques that set great rappers apart."
             imageClassName="object-cover"
           />
         </BentoTilt>
@@ -93,7 +93,7 @@ const Programs = () => {
           </BentoTilt>
           <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
             <BentoCard
-              src="images/dj.jpg"
+              src="images/djtarik.jpg"
               title={
                 <>
                   D<b>J</b>ing
@@ -101,10 +101,10 @@ const Programs = () => {
               }
               description="Learn the fundamentals of mixing, scratching
                 and beat-matching from experienced DJs."
-              imageClassName="object-fill brightness-50"
+              imageClassName="object-cover brightness-50"
             />
           </BentoTilt>
-          <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+          <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 object">
             <BentoCard
               src="images/graffiti.jpg"
               title={

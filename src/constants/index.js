@@ -7,7 +7,7 @@ export const Artists = [
   },
   {
     id: "bawss",
-    imgUrl: "/images/bawssss.jpeg",
+    imgUrl: "/images/bawssimage.jpeg",
     title: "BAWSS",
     biography: `Anas Basbousi is a Moroccan actor and rapper, known artistically as Bawss. 
 He starred in the 2021 movie "Casablanca Beats" (Haut et Fort), which competed for the Palme d'Or at the Cannes Film Festival. 

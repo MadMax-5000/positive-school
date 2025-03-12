@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const trailingSizes = [8, 7, 6, 5, 4];
 

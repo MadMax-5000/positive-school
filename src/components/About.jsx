@@ -26,8 +26,8 @@ const About = () => {
   return (
     <div id="about" className="min-h-screen w-screen bg-black">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
-        <h2 className="text-white text-center text-lg">
-          Welcome to Positive School
+        <h2 className="text-white text-center text-6xl font-robert-medium tracking-tighter">
+          WELCOME TO POSITIVE SCHOOL
         </h2>
 
         <AnimatedTitle
@@ -44,7 +44,7 @@ const About = () => {
       <div className="h-dvh w-screen" id="clip">
         <div className="mask-clip-path about-image">
           <img
-            src="/images/hiphop-scene.jpg"
+            src="/images/about-page.jpg"
             alt="background"
             className="absolute left-0 top-0 size-full object-cover"
           />

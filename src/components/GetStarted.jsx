@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Quote } from "lucide-react";
 
 // Ensure GSAP plugins are registered
 gsap.registerPlugin(ScrollTrigger);
@@ -86,27 +87,51 @@ const AnimatedSections = () => {
     >
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-[#6D0000FF] opacity-5" />
-
+      <div className="flex items-center justify-center min-h-screen bg-black">
+        <div className="max-w-2xl p-8 border border-gray-900 rounded-lg">
+          <div className="flex justify-center mb-4">
+            <Quote className="text-gray-800 w-16 h-16" />
+          </div>
+          <blockquote className="text-center">
+            <p className="text-xl font-light text-white mb-4 leading-relaxed font-robert-medium">
+              "There are places that do more than merely exist—they leave a
+              profound mark on those who pass through them. These are spaces
+              where art becomes a voice, where every beat, every gesture, and
+              every brushstroke resonates like a manifesto. Positive School is
+              one such place."
+            </p>
+          </blockquote>
+        </div>
+      </div>
       {/* About Section */}
       <section className="container mx-auto px-4 py-24 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative">
         <div className="space-y-8">
           <div className="relative">
             <div className="decorative-line absolute -left-4 top-1/2 w-8 h-[2px] bg-[#6D0000FF]" />
-            <h2 className="animate-heading text-5xl md:text-6xl font-bold tracking-tight pl-6">
+            <h2 className="animate-heading text-5xl md:text-6xl font-bold tracking-tight pl-6 font-circular-web">
               ABOUT US
             </h2>
             <div className="absolute -right-4 bottom-0 w-24 h-24 border-r-2 border-b-2 border-[#FE3A26] opacity-20" />
           </div>
           <p className="animate-paragraph text-gray-300 leading-relaxed text-lg relative group">
-            <span className="block relative overflow-hidden">
-              The Positive School of Hip-Hop is a transformative initiative
-              founded by the Ali Zaoua Foundation in 2016 with the support of
-              the U.S. Embassy in Morocco.
+            <span className="block relative overflow-hidden font-robert-medium">
+              Far more than just a school, Positive School is a movement—a
+              philosophy rooted in the very essence of Hip Hop: Respect, Peace,
+              Love, and Unity. Founded in 2016 by rapper and Hip Hop coach Bawss
+              (ANAS BASBOUSI), in partnership with the Ali Zaoua Foundation,
+              Positive School’s mission is to educate and inspire a new
+              generation of artists through the fundamental disciplines of Hip
+              Hop: RAP, Beatbox, Dance, DJing, and Graffiti.
+              <br />
+              <br />
+              In 2017, Flack (Ismail Adouab) joined Positive School as a member,
+              specializing as a sound engineer. His growing commitment led him
+              to become a project leader, developing and structuring new
+              initiatives. In 2023, he devised an innovative strategy that
+              transformed Positive School, and in 2024, his role was officially
+              recognized when he became co-founder.
               <span className="block h-[1px] w-full bg-gradient-to-r from-[#FE3A26] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
             </span>
-            Over the years, we've worked with thousands of aspiring artists
-            across Morocco building a community of artists who are shaping the
-            Moroccan hip-hop scene.
             <span className=" to-white bg-clip-text text-transparent"></span>{" "}
           </p>
         </div>
@@ -214,24 +239,27 @@ const AnimatedSections = () => {
         <div className="md:order-2 space-y-8">
           <div className="relative">
             <div className="decorative-line absolute -left-4 top-1/2 w-8 h-[2px] bg-[#FE3A26]" />
-            <h2 className="animate-heading text-5xl md:text-6xl font-bold tracking-tight pl-6">
-              OUR <span className="text-white">MISSION</span>
+            <h2 className="animate-heading text-5xl md:text-6xl font-bold tracking-tight pl-6 font-circular-web">
+              OUR MISSION
             </h2>
             <div className="absolute -left-8 -bottom-8 w-32 h-32 border-l-2 border-b-2 border-[#FE3A26] opacity-20" />
           </div>
-          <p className="animate-paragraph text-gray-300 leading-relaxed text-lg relative">
-            At the Positive School of Hip-Hop, we aim to give young people the
-            chance to build&nbsp;
+          <p className="animate-paragraph text-gray-300 leading-relaxed text-lg relative font-robert-medium">
+            In a world where expression is an act of resistance, Positive School
+            serves as both a refuge and a launching pad. It provides young
+            people with the tools to transform their realities into art, to turn
+            their struggles into a creative force. Here, learning goes beyond
+            mere technique: it forges voices, identities, and cultural leaders.
+            <br />
+            <br />
+            Today, Positive School is far more than a school. It is a living
+            legacy—a symbol of emancipation and renewal for Moroccan youth and
+            beyond. An artistic revolution that is only just beginning.
             <span className="relative inline-block">
-              a brighter future
               <span className="absolute bottom-0 left-0 w-full h-[2px] " />
             </span>{" "}
             <br />
-            <span className=" from-white bg-clip-text ">
-              We believe that hip-hop is more than just music or art—it’s a way
-              to express yourself, challenge the norm, and create real
-              opportunities.
-            </span>{" "}
+            <span className=" from-white bg-clip-text "></span>{" "}
             <span className="inline-block transform hover:scale-105 transition-transform duration-300 text-[#FE3A26]"></span>{" "}
           </p>
         </div>
@@ -242,9 +270,9 @@ const AnimatedSections = () => {
               group-hover:opacity-30 transition-opacity duration-500"
             />
             <img
-              src="/images/get-started.jpg"
+              src="/images/we-are-growing.jpg"
               alt="How it started"
-              className="w-full h-full object-cover rounded-lg transform group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-cover rounded-lg transform group-hover:scale-105 transition-transform duration-700 grayscale"
             />
           </div>
         </div>

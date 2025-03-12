@@ -1,5 +1,6 @@
 "use client";
 
+import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 
 const ExploreCard = ({
@@ -35,21 +36,21 @@ const ExploreCard = ({
 
       <motion.div
         className={`
-    absolute bottom-0 w-full p-8 flex flex-col
-    ${
-      isActive
-        ? "bg-white/20 backdrop-blur-lg border border-white/30 max-h-[350px]"
-        : "bg-transparent max-h-[80px] justify-center items-center"
-    }
-    overflow-hidden transition-all duration-500 rounded-b-[16px]
-  `}
+          absolute bottom-0 w-full p-8 flex flex-col
+          ${
+            isActive
+              ? "bg-black/40 backdrop-blur-xl border border-white/20 max-h-[350px]"
+              : "bg-transparent max-h-[80px] justify-center items-center"
+          }
+          overflow-hidden transition-all duration-500 rounded-b-[16px]
+        `}
       >
         <motion.h2
           layout="position"
           className={`
-      font-bold text-white transition-all duration-300
-      ${isActive ? "text-[40px] mb-[16px]" : "text-[30px] mb-[4px]"}
-    `}
+            font-bold text-white transition-all duration-300 font-circular-web
+            ${isActive ? "text-[40px] mb-[16px]" : "text-[30px] mb-[4px]"}
+          `}
         >
           {title}
         </motion.h2>
@@ -60,10 +61,10 @@ const ExploreCard = ({
           animate={{ opacity: isActive ? 1 : 0 }}
           transition={{ duration: 0.5 }}
           className={`
-      font-robert-medium text-[16px] leading-[20.16px] text-black text-base
-      overflow-hidden transition-all duration-500
-      ${isActive ? "max-h-[500px]" : "max-h-0"}
-    `}
+            font-robert-medium leading-[20.16px] text-white text-[19px]
+            overflow-hidden transition-all duration-500 font-thin
+            ${isActive ? "max-h-[500px]" : "max-h-0"}
+          `}
         >
           {biography}
         </motion.p>
@@ -72,6 +73,15 @@ const ExploreCard = ({
   );
 };
 
-// ✅ Explicitly export as a named and default export
+ExploreCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  biography: PropTypes.string,
+  index: PropTypes.number.isRequired,
+  active: PropTypes.string,
+  setActive: PropTypes.func.isRequired,
+};
+
 export { ExploreCard };
 export default ExploreCard;
