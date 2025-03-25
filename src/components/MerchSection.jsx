@@ -9,12 +9,14 @@ const ProductCard = memo(({ product }) => {
   return (
     <div key={product.id} className="group cursor-pointer">
       <div className="relative w-96 h-w-96 aspect-square mb-4 bg-white rounded-lg overflow-hidden">
-        <img
-          src={product.image || "/placeholder.svg"}
-          alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-          loading="lazy"
-        />
+        <div className="blur-lg">
+          <img
+            src={product.image || "/placeholder.svg"}
+            alt={product.name}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
+        </div>
       </div>
       <h3 className="text-sm font-medium mb-2">{product.name}</h3>
       <p className="text-zinc-400">{product.price.toFixed(2)} MAD</p>
@@ -27,13 +29,13 @@ export default function MerchSection() {
     {
       id: 1,
       name: "POSITIVE SCHOOL Lightweight T-Shirt (FRONT)",
-      price: 200.0,
+      price: 0,
       image: "/images/merch1.png",
     },
     {
       id: 2,
       name: "POSITIVE SCHOOL Lightweight T-Shirt (BACK)",
-      price: 200.0,
+      price: 0,
       image: "/images/merch2.png",
     },
   ];
