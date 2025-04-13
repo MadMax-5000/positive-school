@@ -1,8 +1,10 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
   const itemRef = useRef(null);
+
   const handleMouseMove = (e) => {
     if (!itemRef.current) return;
     const { left, top, width, height } =
@@ -14,9 +16,11 @@ const BentoTilt = ({ children, className = "" }) => {
     const newTransform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(.95, .95, .95)`;
     setTransformStyle(newTransform);
   };
+
   const handleMouseLeave = () => {
     setTransformStyle("");
   };
+
   return (
     <div
       className={className}
@@ -30,12 +34,19 @@ const BentoTilt = ({ children, className = "" }) => {
   );
 };
 
-const BentoCard = ({ src, title, description, imageClassName = "" }) => {
+const BentoCard = ({
+  src,
+  title,
+  description,
+  imageClassName = "",
+  linkTo,
+}) => {
   return (
     <div className="relative size-full">
       <img
         src={src}
         className={`absolute left-0 top-0 size-full grayscale ${imageClassName}`}
+        loading="lazy" // Add this
       />
       <div className="relative z-10 flex size-full flex-col justify-between p-5 text-white">
         <div>
@@ -46,6 +57,13 @@ const BentoCard = ({ src, title, description, imageClassName = "" }) => {
             </p>
           )}
         </div>
+        <div className="absolute bottom-5 left-5">
+          <Link to={linkTo}>
+            <button className="px-4 py-2 bg-white text-black font-semibold rounded-full">
+              See More
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -55,8 +73,8 @@ const Programs = () => {
   return (
     <section className="bg-black pb-20">
       <div className="container mx-auto px-3 md:px-10">
-        <div className="px-5 py-32 ">
-          <p className="font-robert-medium text-3xl text-white text-pretty tracking-tight">
+        <div className="px-5 py-32">
+          <p className="object- font-robert-medium text-3xl text-white text-pretty tracking-tight">
             DISCOVER OUR PROGRAMS
           </p>
 
@@ -66,54 +84,45 @@ const Programs = () => {
           </p>
         </div>
 
-        <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh] ">
-          <BentoCard
-            src="images/rap.jpg"
-            title={
-              <>
-                R<b>A</b>P
-              </>
-            }
-            description="Our rap program helps you refine your style and master the techniques that set great rappers apart."
-            imageClassName="object-cover"
-          />
-        </BentoTilt>
-        <div className="grid h-[135vh] grid-cols-2 grid-rows-2 gap-7">
-          <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
+        {/* Mobile Layout - Stacked Cards */}
+        <div className="space-y-7">
+          <BentoTilt className="border-hsla relative h-96 w-full overflow-hidden rounded-md">
+            <BentoCard
+              src="images/rap.jpg"
+              title={<>RAP</>}
+              description="Our rap program helps you refine your style and master the techniques that set great rappers apart."
+              imageClassName="object-cover"
+              linkTo="/rap"
+            />
+          </BentoTilt>
+
+          <BentoTilt className="border-hsla relative h-96 w-full overflow-hidden rounded-md">
             <BentoCard
               src="images/dance.jpg"
-              title={
-                <>
-                  <b>D</b>ANCE
-                </>
-              }
+              title={<> DANCE </>}
               description="You will learn how you develop style, precision, and confidence."
-              imageClassName="object-none brightness-50"
-            />
-          </BentoTilt>
-          <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
-            <BentoCard
-              src="images/djtarik.jpg"
-              title={
-                <>
-                  D<b>J</b>ing
-                </>
-              }
-              description="Learn the fundamentals of mixing, scratching
-                and beat-matching from experienced DJs."
               imageClassName="object-cover brightness-50"
+              linkTo="/dance"
             />
           </BentoTilt>
-          <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 object">
+
+          <BentoTilt className="border-hsla relative h-96 w-full overflow-hidden rounded-md">
+            <BentoCard
+              src="\images\djing\dj (6).JPG"
+              title={<> DJing </>}
+              description="Learn the fundamentals of mixing, scratching and beat-matching from experienced DJs."
+              imageClassName="object-cover brightness-50"
+              linkTo="/djing"
+            />
+          </BentoTilt>
+
+          <BentoTilt className="border-hsla relative h-96 w-full overflow-hidden rounded-md">
             <BentoCard
               src="images/graffiti.jpg"
-              title={
-                <>
-                  GRA<b>FF</b>ITI
-                </>
-              }
+              title={<> GRAFFITI </>}
               description="Turn walls into works of art and bring your ideas to life through graffiti"
               imageClassName="object-cover brightness-50"
+              linkTo="/graffiti"
             />
           </BentoTilt>
         </div>

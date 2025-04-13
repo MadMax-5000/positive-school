@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Quote } from "lucide-react";
 
 // Ensure GSAP plugins are registered
 gsap.registerPlugin(ScrollTrigger);
@@ -86,32 +85,17 @@ const AnimatedSections = () => {
       className="bg-black text-white min-h-screen relative overflow-hidden"
     >
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-[#6D0000FF] opacity-5" />
-      <div className="flex items-center justify-center min-h-screen bg-black">
-        <div className="max-w-2xl p-8 border border-gray-900 rounded-lg">
-          <div className="flex justify-center mb-4">
-            <Quote className="text-gray-800 w-16 h-16" />
-          </div>
-          <blockquote className="text-center">
-            <p className="text-xl font-light text-white mb-4 leading-relaxed font-robert-medium">
-              "There are places that do more than merely exist—they leave a
-              profound mark on those who pass through them. These are spaces
-              where art becomes a voice, where every beat, every gesture, and
-              every brushstroke resonates like a manifesto. Positive School is
-              one such place."
-            </p>
-          </blockquote>
-        </div>
-      </div>
-      {/* About Section */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black opacity-5" />
+
+      {/* Main Section */}
       <section className="container mx-auto px-4 py-24 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative">
         <div className="space-y-8">
           <div className="relative">
-            <div className="decorative-line absolute -left-4 top-1/2 w-8 h-[2px] bg-[#6D0000FF]" />
+            <div className="decorative-line absolute -left-4 top-1/2 w-8 h-[2px] bg-white" />
             <h2 className="animate-heading text-5xl md:text-6xl font-bold tracking-tight pl-6 font-circular-web">
               ABOUT US
             </h2>
-            <div className="absolute -right-4 bottom-0 w-24 h-24 border-r-2 border-b-2 border-[#FE3A26] opacity-20" />
+            <div className="absolute -right-4 bottom-0 w-24 h-24 border border-white opacity-20" />
           </div>
           <p className="animate-paragraph text-gray-300 leading-relaxed text-lg relative group">
             <span className="block relative overflow-hidden font-robert-medium">
@@ -130,13 +114,12 @@ const AnimatedSections = () => {
               initiatives. In 2023, he devised an innovative strategy that
               transformed Positive School, and in 2024, his role was officially
               recognized when he became co-founder.
-              <span className="block h-[1px] w-full bg-gradient-to-r from-[#FE3A26] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
+              <span className="block h-[1px] w-full bg-gradient-to-r from-white to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
             </span>
-            <span className=" to-white bg-clip-text text-transparent"></span>{" "}
           </p>
         </div>
         <div className="flex justify-center items-center relative">
-          <div className="absolute inset-0 bg-[#FE3A26] opacity-5 blur-3xl rounded-full" />
+          <div className="absolute inset-0 bg-white opacity-5 blur-3xl rounded-full" />
           {/* Vinyl SVG section */}
           <svg
             ref={vinylRef}
@@ -151,7 +134,7 @@ const AnimatedSections = () => {
             </defs>
 
             {/* Vinyl background */}
-            <circle cx="200" cy="200" r="200" fill="#FE3A26" />
+            <circle cx="200" cy="200" r="200" fill="white" />
 
             {/* Black interior disc */}
             <circle cx="200" cy="200" r="150" fill="black" />
@@ -208,7 +191,7 @@ const AnimatedSections = () => {
 
             {/* Repeated text */}
             <text
-              fill="white"
+              fill="black"
               fontSize="35"
               fontWeight="bold"
               letterSpacing="0.3"
@@ -223,7 +206,7 @@ const AnimatedSections = () => {
               cx="200"
               cy="200"
               r="50"
-              fill="#FE3A26"
+              fill="white"
               stroke="white"
               strokeWidth="2"
             />
@@ -238,11 +221,11 @@ const AnimatedSections = () => {
       <section className="container mx-auto px-4 py-24 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="md:order-2 space-y-8">
           <div className="relative">
-            <div className="decorative-line absolute -left-4 top-1/2 w-8 h-[2px] bg-[#FE3A26]" />
+            <div className="decorative-line absolute -left-4 top-1/2 w-8 h-[2px] bg-white" />
             <h2 className="animate-heading text-5xl md:text-6xl font-bold tracking-tight pl-6 font-circular-web">
               OUR MISSION
             </h2>
-            <div className="absolute -left-8 -bottom-8 w-32 h-32 border-l-2 border-b-2 border-[#FE3A26] opacity-20" />
+            <div className="absolute -left-8 -bottom-8 w-32 h-32 border-l border-b border-white opacity-20" />
           </div>
           <p className="animate-paragraph text-gray-300 leading-relaxed text-lg relative font-robert-medium">
             In a world where expression is an act of resistance, Positive School
@@ -255,18 +238,12 @@ const AnimatedSections = () => {
             Today, Positive School is far more than a school. It is a living
             legacy—a symbol of emancipation and renewal for Moroccan youth and
             beyond. An artistic revolution that is only just beginning.
-            <span className="relative inline-block">
-              <span className="absolute bottom-0 left-0 w-full h-[2px] " />
-            </span>{" "}
-            <br />
-            <span className=" from-white bg-clip-text "></span>{" "}
-            <span className="inline-block transform hover:scale-105 transition-transform duration-300 text-[#FE3A26]"></span>{" "}
           </p>
         </div>
         <div className="md:order-1 overflow-hidden group">
           <div className="history-image relative w-full aspect-video">
             <div
-              className="absolute inset-0 bg-gradient-to-tr from-[#FE3A26] to-transparent opacity-20 z-10 
+              className="absolute inset-0 bg-gradient-to-tr from-white to-transparent opacity-20 z-10 
               group-hover:opacity-30 transition-opacity duration-500"
             />
             <img

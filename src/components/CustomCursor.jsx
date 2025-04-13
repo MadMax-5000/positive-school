@@ -2,51 +2,73 @@ import { useEffect, useState } from "react";
 
 const trailingSizes = [8, 7, 6, 5, 4];
 
+const isTouchDevice = () => {
+  try {
+    // More robust touch device detection
+    return (
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      (window.matchMedia && window.matchMedia("(pointer: coarse)").matches)
+    );
+  } catch (e) {
+    return false;
+  }
+};
+
 const CustomCursor = () => {
-  // Instantaneous mouse position
+  if (isTouchDevice()) return null;
+
   const [mousePosition, setMousePosition] = useState({
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
+    x: typeof window !== "undefined" ? window.innerWidth / 2 : 0,
+    y: typeof window !== "undefined" ? window.innerHeight / 2 : 0,
   });
-  // Smoothed cursor position for a lag/delay effect
+
   const [cursorPosition, setCursorPosition] = useState({
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
+    x: typeof window !== "undefined" ? window.innerWidth / 2 : 0,
+    y: typeof window !== "undefined" ? window.innerHeight / 2 : 0,
   });
-  // Cursor variant: 'default' | 'click' | 'link'
+
   const [cursorVariant, setCursorVariant] = useState("default");
-  // Visibility state for showing/hiding the cursor
   const [isVisible, setIsVisible] = useState(true);
-  // Positions for trailing dots
+
   const [trailPositions, setTrailPositions] = useState(
     Array(trailingSizes.length).fill({
-      x: window.innerWidth / 2,
-      y: window.innerHeight / 2,
+      x: typeof window !== "undefined" ? window.innerWidth / 2 : 0,
+      y: typeof window !== "undefined" ? window.innerHeight / 2 : 0,
     })
   );
 
-  // Hide native browser cursor globally
   useEffect(() => {
+    // Ensure we're only running this on the client-side
+    if (typeof window === "undefined") return;
+
     const originalCursor = document.body.style.cursor;
     document.body.style.cursor = "none";
+
     return () => {
       document.body.style.cursor = originalCursor;
     };
   }, []);
 
-  // Update instantaneous mouse position on movement
   useEffect(() => {
+    // Ensure we're only running this on the client-side
+    if (typeof window === "undefined") return;
+
     const moveCursor = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
-    window.addEventListener("mousemove", moveCursor);
+
+    // Use passive event listener for better performance
+    window.addEventListener("mousemove", moveCursor, { passive: true });
     return () => window.removeEventListener("mousemove", moveCursor);
   }, []);
 
-  // Smoothly interpolate cursorPosition toward mousePosition
   useEffect(() => {
+    // Ensure we're only running this on the client-side
+    if (typeof window === "undefined") return;
+
     let rafId;
-    const smoothing = 0.2; // Adjust to change delay/smoothness
+    const smoothing = 0.2;
     const animateCursor = () => {
       setCursorPosition((prev) => ({
         x: prev.x + (mousePosition.x - prev.x) * smoothing,
@@ -58,8 +80,10 @@ const CustomCursor = () => {
     return () => cancelAnimationFrame(rafId);
   }, [mousePosition]);
 
-  // Update variant on click events
   useEffect(() => {
+    // Ensure we're only running this on the client-side
+    if (typeof window === "undefined") return;
+
     const handleMouseDown = () => setCursorVariant("click");
     const handleMouseUp = () => setCursorVariant("default");
     window.addEventListener("mousedown", handleMouseDown);
@@ -70,10 +94,13 @@ const CustomCursor = () => {
     };
   }, []);
 
-  // Change variant when hovering over interactive elements
   useEffect(() => {
+    // Ensure we're only running this on the client-side
+    if (typeof window === "undefined") return;
+
     const handleMouseOver = (e) => {
       if (
+        e.target &&
         e.target.closest('a, button, input, textarea, select, [role="button"]')
       ) {
         setCursorVariant("link");
@@ -81,6 +108,7 @@ const CustomCursor = () => {
     };
     const handleMouseOut = (e) => {
       if (
+        e.target &&
         e.target.closest('a, button, input, textarea, select, [role="button"]')
       ) {
         setCursorVariant("default");
@@ -94,19 +122,18 @@ const CustomCursor = () => {
     };
   }, []);
 
-  // Ensure the custom cursor is visible when returning to the tab
   useEffect(() => {
+    // Ensure we're only running this on the client-side
+    if (typeof window === "undefined") return;
+
     const handleVisibilityChange = () => {
       setIsVisible(document.visibilityState !== "hidden");
     };
-
     const handleFocus = () => setIsVisible(true);
     const handleBlur = () => setIsVisible(false);
-
     document.addEventListener("visibilitychange", handleVisibilityChange);
     window.addEventListener("focus", handleFocus);
     window.addEventListener("blur", handleBlur);
-
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       window.removeEventListener("focus", handleFocus);
@@ -114,19 +141,19 @@ const CustomCursor = () => {
     };
   }, []);
 
-  // Animate trailing dots to follow the smoothed cursor position
   useEffect(() => {
+    // Ensure we're only running this on the client-side
+    if (typeof window === "undefined") return;
+
     let rafId;
     const smoothing = 0.15;
     const animateTrail = () => {
       setTrailPositions((prevTrail) => {
         const newTrail = [...prevTrail];
-        // First trailing dot follows the main smoothed cursor
         newTrail[0] = {
           x: prevTrail[0].x + (cursorPosition.x - prevTrail[0].x) * smoothing,
           y: prevTrail[0].y + (cursorPosition.y - prevTrail[0].y) * smoothing,
         };
-        // Each subsequent dot follows the one ahead
         for (let i = 1; i < trailingSizes.length; i++) {
           newTrail[i] = {
             x:
@@ -143,7 +170,6 @@ const CustomCursor = () => {
     return () => cancelAnimationFrame(rafId);
   }, [cursorPosition]);
 
-  // Determine sizes and scales for main dot and outline ring based on variant
   const mainDotBaseSize = 12;
   const ringBaseSize = 36;
   let mainScale = 1;
@@ -156,7 +182,6 @@ const CustomCursor = () => {
     ringScale = 2;
   }
 
-  // Styles using inline transforms for positioning and scaling
   const mainDotStyle = {
     width: `${mainDotBaseSize}px`,
     height: `${mainDotBaseSize}px`,
@@ -177,29 +202,26 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* Main dot */}
       <div
-        className="fixed pointer-events-none z-50 transition-transform duration-150 ease-out"
+        className="fixed pointer-events-none z-[9999] transition-transform duration-150 ease-out"
         style={mainDotStyle}
       >
         <div className="w-full h-full bg-white rounded-full" />
       </div>
 
-      {/* Outline ring */}
       <div
-        className="fixed pointer-events-none z-40 transition-transform duration-150 ease-out"
+        className="fixed pointer-events-none z-[9998] transition-transform duration-150 ease-out"
         style={ringStyle}
       >
         <div className="w-full h-full border border-white rounded-full" />
       </div>
 
-      {/* Trailing dots */}
       {trailPositions.map((pos, idx) => {
         const size = trailingSizes[idx];
         return (
           <div
             key={idx}
-            className="fixed pointer-events-none z-30 transition-transform duration-150 ease-out opacity-50"
+            className="fixed pointer-events-none z-[9997] transition-transform duration-150 ease-out opacity-50"
             style={{
               width: size,
               height: size,

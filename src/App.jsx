@@ -1,50 +1,64 @@
-import About from "./components/About";
-import Contact from "./components/Contact";
-import CustomCursor from "./components/CustomCursor";
-import Djing from "./pages/djing";
-import Footer from "./components/Footer";
-import AnimatedSections from "./components/GetStarted";
-import Graffiti from "./pages/graffiti";
-import Hero from "./components/hero";
-import RAP from "./pages/rap";
-import MerchSection from "./components/MerchSection";
-import Navbar from "./components/Navbar";
-import Programs from "./components/Programs";
-import SuccessStories from "./components/SuccessStories";
-import AboutUs from "./pages/AboutUs";
-import Dance from "./pages/Dance";
+import { lazy, Suspense, useMemo } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CustomCursor from "./components/CustomCursor";
+import Navbar from "./components/Navbar";
+
+const Hero = lazy(() => import("./components/hero"));
+const About = lazy(() => import("./components/About"));
+const Programs = lazy(() => import("./components/Programs"));
+const MerchSection = lazy(() => import("./components/MerchSection"));
+const SuccessStories = lazy(() => import("./components/SuccessStories"));
+const AnimatedSections = lazy(() => import("./components/GetStarted"));
+const Contact = lazy(() => import("./components/Contact"));
+const Footer = lazy(() => import("./components/Footer"));
+
+// Lazy-loaded routes
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const Djing = lazy(() => import("./pages/djing"));
+const Graffiti = lazy(() => import("./pages/graffiti"));
+const RAP = lazy(() => import("./pages/rap"));
+const Dance = lazy(() => import("./pages/Dance"));
+
+// Loading fallback component
+const Loader = () => <div className="text-white text-center">Loading...</div>;
 
 const App = () => {
+  // Memoize static components
+  const memoizedNavbar = useMemo(() => <Navbar />, []);
+  const memoizedCursor = useMemo(() => <CustomCursor />, []);
+
   return (
     <Router>
       <main className="relative min-h-screen w-screen overflow-x-hidden bg-black">
-        <CustomCursor />
-        <Navbar />
-        <Routes>
-          {/* Home Route */}
-          <Route
-            path="/"
-            element={
-              <>
-                <Hero />
-                <About />
-                <Programs />
-                <MerchSection />
-                <SuccessStories />
-                <AnimatedSections />
-                <Contact />
-                <Footer />
-              </>
-            }
-          />
+        {memoizedCursor}
+        {memoizedNavbar}
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            {/* Home Route */}
+            <Route
+              path="/"
+              element={
+                <>
+                  <Hero />
+                  <About />
+                  <Programs />
+                  <MerchSection />
+                  <SuccessStories />
+                  <AnimatedSections />
+                  <Contact />
+                  <Footer />
+                </>
+              }
+            />
 
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/djing" element={<Djing />} />
-          <Route path="/graffiti" element={<Graffiti />} />
-          <Route path="/rap" element={<RAP />} />
-          <Route path="/dance" element={<Dance />} />
-        </Routes>
+            {/* Lazy-loaded Routes */}
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/djing" element={<Djing />} />
+            <Route path="/graffiti" element={<Graffiti />} />
+            <Route path="/rap" element={<RAP />} />
+            <Route path="/dance" element={<Dance />} />
+          </Routes>
+        </Suspense>
       </main>
     </Router>
   );

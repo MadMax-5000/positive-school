@@ -1,7 +1,14 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 
-const Button = ({ id, title, rightIcon, leftIcon, containerClass }) => {
+const Button = ({
+  id,
+  title,
+  rightIcon,
+  leftIcon,
+  containerClass,
+  onClick,
+}) => {
   return (
     <button
       id={id}
@@ -9,6 +16,7 @@ const Button = ({ id, title, rightIcon, leftIcon, containerClass }) => {
         "group relative z-10 w-fit cursor-pointer overflow-hidden rounded-full bg-white px-7 py-3 text-black",
         containerClass
       )}
+      onClick={onClick} // Added onClick here
     >
       {leftIcon}
 
@@ -32,6 +40,7 @@ Button.propTypes = {
   rightIcon: PropTypes.node,
   leftIcon: PropTypes.node,
   containerClass: PropTypes.string,
+  onClick: PropTypes.func, // Added onClick propType
 };
 
 export default Button;

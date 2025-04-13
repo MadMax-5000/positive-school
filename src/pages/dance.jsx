@@ -2,15 +2,18 @@ const Dance = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <header className="py-12 md:py-20">
-        <h1 className="font-robert-medium tracking-wide relative mt-12 text-center text-4xl md:text-8xl font-black bg-clip-text text-transparent text-white animate-pulse">
+        <h1 className="font-akira tracking-wide relative mt-12 text-center text-4xl md:text-8xl font-black bg-clip-text text-transparent text-white animate-pulse">
           DANCE
-          <span className="-bottom-4 absolute inset-x-0 h-2 bg-gradient-to-r from-gray-400 to-gray-600"></span>
         </h1>
+        <p className="text-center mt-4">
+          Hip-hop in motion. Every step, every spin, every move tells a story
+          you can feel.
+        </p>
       </header>
 
       {/* Image Gallery */}
       <main className="container mx-auto px-8 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
           {/* Image 1 */}
           <div className="group relative overflow-hidden rounded-lg transition-all duration-300 hover:scale-[1.02] hover:z-10">
             <img

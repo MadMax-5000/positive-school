@@ -10,7 +10,10 @@ const SuccessStories = () => {
   const [active, setActive] = useState("");
 
   return (
-    <section className="py-16 px-4 md:px-8 lg:px-16" id="SuccessStories">
+    <section
+      className="py-16 px-4 md:px-8 lg:px-16 overflow-x-hidden" // Added overflow-x-hidden
+      id="SuccessStories"
+    >
       <motion.div
         initial="hidden"
         whileInView="show"

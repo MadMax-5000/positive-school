@@ -2,10 +2,14 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-black text-white">
       <header className="py-12 md:py-20">
-        <h1 className="font-robert-medium tracking-wide relative mt-12 text-center text-4xl md:text-8xl font-black bg-clip-text text-transparent text-white animate-pulse">
+        <h1 className="font-akira tracking-wide relative mt-12 text-center text-4xl md:text-8xl font-black bg-clip-text text-transparent text-white animate-pulse">
           DJING
-          <span className="-bottom-4 absolute inset-x-0 h-2 bg-gradient-to-r from-gray-400 to-gray-600"></span>
         </h1>
+        <p className="text-center mt-4">
+          The heartbeat of every party. Scratching, mixing, and dropping beats{" "}
+          <br />
+          that make people move—turntables don’t lie.
+        </p>
       </header>
 
       {/* Image Gallery */}

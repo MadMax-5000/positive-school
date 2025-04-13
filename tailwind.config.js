@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        akira: ["akira", "sans-serif"],
         exo2: ['"Exo 2"', "sans-serif"],
         zentry: ["zentry", "sans-serif"],
         general: ["general", "sans-serif"],

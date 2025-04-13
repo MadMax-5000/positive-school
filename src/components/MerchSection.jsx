@@ -1,30 +1,7 @@
-import React, { memo, useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useState } from "react";
+import { ChevronRight, Sparkles } from "lucide-react";
 
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
-
-const ProductCard = memo(({ product }) => {
-  return (
-    <div key={product.id} className="group cursor-pointer">
-      <div className="relative w-96 h-w-96 aspect-square mb-4 bg-white rounded-lg overflow-hidden">
-        <div className="blur-lg">
-          <img
-            src={product.image || "/placeholder.svg"}
-            alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            loading="lazy"
-          />
-        </div>
-      </div>
-      <h3 className="text-sm font-medium mb-2">{product.name}</h3>
-      <p className="text-zinc-400">{product.price.toFixed(2)} MAD</p>
-    </div>
-  );
-});
-
-export default function MerchSection() {
+const LatestAdditions = () => {
   const products = [
     {
       id: 1,
@@ -40,96 +17,92 @@ export default function MerchSection() {
     },
   ];
 
-  // Refs for animation targets
-  const sectionRef = useRef(null);
-  const headingRef = useRef(null);
-  const cardsContainerRef = useRef(null);
-  const buttonRef = useRef(null);
-
-  useEffect(() => {
-    // Initialize all cards to be invisible
-    gsap.set(".product-card", { y: 80, opacity: 0, scale: 0.9 });
-    gsap.set(headingRef.current, { y: 50, opacity: 0 });
-    gsap.set(buttonRef.current, { y: 30, opacity: 0 });
-
-    // Create a timeline for the section animations
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 70%", // Start animation when the top of the section hits 70% down the viewport
-        end: "bottom 70%",
-        toggleActions: "play none none none", // Play animation when scrolled into view
-        // markers: true, // Enable for debugging - shows scroll trigger points
-      },
-    });
-
-    // Add animations to the timeline
-    tl.to(headingRef.current, {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: "power3.out",
-    })
-      .to(
-        ".product-card",
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.7,
-          stagger: 0.2,
-          ease: "back.out(1.2)",
-        },
-        "-=0.4"
-      )
-      .to(
-        buttonRef.current,
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          ease: "power2.out",
-        },
-        "-=0.2"
-      );
-
-    return () => {
-      // Clean up animations and scroll triggers when component unmounts
-      if (tl.scrollTrigger) {
-        tl.scrollTrigger.kill();
-      }
-      tl.kill();
-    };
-  }, []);
+  const [isHovered, setIsHovered] = useState(null);
 
   return (
-    <section ref={sectionRef} className="bg-black text-white py-16 px-4">
-      <div className="max-w-7xl mx-auto">
-        <h2
-          ref={headingRef}
-          className="uppercase text-4xl md:text-6xl font-zentry text-center mb-12 tracking-wide"
-        >
-          L<b>a</b>test Additi<b>o</b>ns
-        </h2>
-        <div
-          ref={cardsContainerRef}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12 justify-items-center"
-        >
-          {products.map((product) => (
-            <div key={product.id} className="product-card">
-              <ProductCard product={product} />
-            </div>
-          ))}
-        </div>
-        <div className="text-center">
-          <button
-            ref={buttonRef}
-            className="inline-flex items-center justify-center px-8 py-3 text-sm font-medium text-white border border-white rounded-md hover:bg-white hover:text-black transition-colors duration-200"
-          >
-            DISCOVER MORE
-          </button>
+    <div
+      id="merch"
+      className="bg-black text-white min-h-screen flex flex-col justify-center items-center p-4 sm:p-8 mt-28"
+    >
+      <div className="max-w-4xl w-full">
+        <div className="relative">
+          <h2 className="text-4xl sm:text-6xl font-bold mb-6 sm:mb-8 text-center text-white font-akira">
+            Latest Additions
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {products.map((product) => (
+              <div
+                key={product.id}
+                className="relative group"
+                onMouseEnter={() => setIsHovered(product.id)}
+                onMouseLeave={() => setIsHovered(null)}
+              >
+                <div
+                  className={`absolute -inset-0.5 bg-white/20 
+                  rounded-xl blur-lg opacity-0 
+                  ${isHovered === product.id ? "opacity-100" : ""}
+                  transition duration-500 
+                  shadow-[0_0_30px_5px_rgba(255,255,255,0.3)]`}
+                ></div>
+
+                <div
+                  className="relative bg-black rounded-xl overflow-hidden 
+                  border border-white/10 hover:border-white/30 transition duration-300"
+                >
+                  <div
+                    className="aspect-square bg-gray-200 
+                    flex items-center justify-center p-4 relative overflow-hidden"
+                  >
+                    <div
+                      className="absolute inset-0 bg-[length:40px_40px] opacity-10 
+                      bg-[linear-gradient(to_right,#4f4f4f_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f_1px,transparent_1px)]"
+                    ></div>
+
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-contain rounded-lg 
+                        transform group-hover:scale-110 transition duration-500 
+                        opacity-70 group-hover:opacity-100 blur-[2px]"
+                    />
+                  </div>
+
+                  <div className="p-4">
+                    <h3 className="text-base sm:text-lg font-semibold mb-1 text-white">
+                      {product.name}
+                    </h3>
+                    <p className="text-white/70 text-xs sm:text-sm">
+                      {product.price === 0
+                        ? "0.00 MAD"
+                        : `${product.price} MAD`}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-6 sm:mt-8">
+            <button
+              onClick={() =>
+                (window.location.href = "https://positivesch2ol.com/merch")
+              }
+              className="group relative px-6 py-3 rounded-full 
+  bg-white text-black hover:bg-gray-200
+  flex items-center space-x-2 
+  transition duration-300 ease-in-out
+  hover:shadow-[0_0_30px_5px_rgba(0,0,0,0.1)]"
+            >
+              <span className="relative z-10 flex items-center text-sm font-medium">
+                Shop Now <ChevronRight className="ml-2 w-4 h-4" />
+              </span>
+            </button>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
-}
+};
+
+export default LatestAdditions;

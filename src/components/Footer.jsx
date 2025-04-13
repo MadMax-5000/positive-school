@@ -28,15 +28,11 @@ const Footer = () => {
             </a>
           ))}
         </div>
-        <p className="uppercase text-center text-lg font-light md:text-left">
-          © positive school. all rights reserved
-        </p>
-        <a
-          href="#privacy-policy"
-          className="text-center text-lg hover:underline md:text-right"
-        >
-          Privacy Policy
-        </a>
+        <div className="font-exo2">
+          <p className="uppercase text-center text-lg font-light md:text-left">
+            © positive school. all rights reserved
+          </p>
+        </div>
       </div>
     </footer>
   );
