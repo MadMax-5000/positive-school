@@ -11,14 +11,15 @@ const SuccessStories = lazy(() => import("./components/SuccessStories"));
 const AnimatedSections = lazy(() => import("./components/GetStarted"));
 const Contact = lazy(() => import("./components/Contact"));
 const Footer = lazy(() => import("./components/Footer"));
+const Video = lazy(() => import("./components/Videocomponent"))
+
 
 // Lazy-loaded routes
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const Djing = lazy(() => import("./pages/djing"));
 const Graffiti = lazy(() => import("./pages/graffiti"));
 const RAP = lazy(() => import("./pages/rap"));
-const Dance = lazy(() => import("./pages/Dance"));
-
+const Dance = lazy(() => import("./pages/dance"));
 // Loading fallback component
 const Loader = () => <div className="text-white text-center">Loading...</div>;
 
@@ -42,6 +43,7 @@ const App = () => {
                   <Hero />
                   <About />
                   <Programs />
+                  <Video/>
                   <MerchSection />
                   <SuccessStories />
                   <AnimatedSections />

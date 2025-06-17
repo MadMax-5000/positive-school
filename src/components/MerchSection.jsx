@@ -6,13 +6,13 @@ const LatestAdditions = () => {
     {
       id: 1,
       name: "POSITIVE SCHOOL Lightweight T-Shirt (FRONT)",
-      price: 0,
+      price: 169.00,
       image: "/images/merch1.png",
     },
     {
       id: 2,
       name: "POSITIVE SCHOOL Lightweight T-Shirt (BACK)",
-      price: 0,
+      price: 169.00,
       image: "/images/merch2.png",
     },
   ];
@@ -40,7 +40,7 @@ const LatestAdditions = () => {
               >
                 <div
                   className={`absolute -inset-0.5 bg-white/20 
-                  rounded-xl blur-lg opacity-0 
+                  rounded-xl opacity-0 
                   ${isHovered === product.id ? "opacity-100" : ""}
                   transition duration-500 
                   shadow-[0_0_30px_5px_rgba(255,255,255,0.3)]`}
@@ -64,7 +64,7 @@ const LatestAdditions = () => {
                       alt={product.name}
                       className="w-full h-full object-contain rounded-lg 
                         transform group-hover:scale-110 transition duration-500 
-                        opacity-70 group-hover:opacity-100 blur-[2px]"
+                        opacity-70 group-hover:opacity-100"
                     />
                   </div>
 
@@ -73,9 +73,7 @@ const LatestAdditions = () => {
                       {product.name}
                     </h3>
                     <p className="text-white/70 text-xs sm:text-sm">
-                      {product.price === 0
-                        ? "0.00 MAD"
-                        : `${product.price} MAD`}
+                    {`${product.price.toFixed(2)} MAD`}
                     </p>
                   </div>
                 </div>

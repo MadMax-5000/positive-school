@@ -268,8 +268,8 @@ export default function Hero() {
           }}
         />
         <p
-          className="absolute w-full bottom-32 text-center text-white font-robert-medium"
-          style={{ zIndex: 3, fontSize: "1.9rem" }}
+          className="absolute w-full bottom-32 text-center text-white font-robert-medium mb-4"
+          style={{ zIndex: 2, fontSize: "1.9rem" }}
         >
           © SOUNI3A FI ALMAGHRIB
         </p>
@@ -371,8 +371,8 @@ export default function Hero() {
               : window.innerWidth < 768
               ? "20px" // Adjust for medium screens
               : window.innerWidth < 1024
-              ? "30px" // Adjust for large screens
-              : "40px", // Default for extra-large screens
+              ? "40px" // Adjust for large screens
+              : "50px", // Default for extra-large screens
         }}
       >
         © SOUNI3A FI ALMAGHRIB

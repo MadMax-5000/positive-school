@@ -55,7 +55,7 @@ const ExploreCard = ({
         className={
           isMobile
             ? // On mobile, no grayscale or hover scale needed
-              "w-full h-auto object-cover"
+              "w-full h-auto object-cover grayscale"
             : // On desktop, original transitions
               "absolute w-full h-full object-cover rounded-[24px] transition-all duration-500 group-hover:scale-110 grayscale"
         }
@@ -66,7 +66,7 @@ const ExploreCard = ({
         className={
           isMobile
             ? // On mobile, place text below image, normal background
-              "relative w-full p-4 bg-zinc-800 text-white"
+              "relative w-full p-4 bg-gray-100 text-black"
             : // On desktop, keep the “overlay” style
               `absolute bottom-0 w-full p-8 flex flex-col ${
                 cardActive

@@ -70,6 +70,11 @@ const AboutUs = () => {
       mapUrl:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3441.3377171888083!2d-9.5664149!3d30.3981588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b7459f9a0e21%3A0x789eb5ed43add04c!2sCentre%20Culturel%20Les%20%C3%89toiles%20du%20Souss%20Agadir!5e0!3m2!1sfr!2sma!4v1742984300975!5m2!1sfr!2sma",
     },
+    {
+      name: "Tangier",
+      mapUrl:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.4956161891632!2d-5.811745800000001!3d35.7632001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0b80ca24279d23%3A0xa8f24212959ee03c!2z2KfZhNmF2LHZg9iyINin2YTYq9mC2KfZgdmKINmG2KzZiNmFINin2YTYqNmI2LrYp9iyIC0gQ2VudHJlIEN1bHR1cmVsIGxlcyBFdG9pbGVzIGR1IERldHJvaXQ!5e0!3m2!1sen!2sma!4v1749861313333!5m2!1sen!2sma",
+    },
   ];
 
   return (
